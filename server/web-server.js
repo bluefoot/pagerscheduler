@@ -10,7 +10,7 @@ const init = () => {
     app.use(express.static(rootPath + '/dist'));
     
     app.get('*', function(req, res) {
-        res.sendFile(rootPath + '/app/index.html')
+        res.sendFile(rootPath + '/dist/index.html')
     });
     
     app.listen(port);
