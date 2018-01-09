@@ -1,0 +1,7 @@
+applications:
+ - name: pagerscheduler
+  random-route: true
+  memory: 192M
+  buildpack: nodejs_buildpack
+  domain: mybluemix.net
+  command: node server/web-server.js
