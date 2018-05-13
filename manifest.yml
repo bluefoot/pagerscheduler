@@ -4,3 +4,4 @@ applications:
   memory: 256M
   buildpack: staticfile_buildpack
   domain: mybluemix.net
+  command: null
