@@ -1,7 +1,7 @@
 ---
 applications:
 - name: pagerscheduler
-  memory: 256M
+  memory: 768M
   buildpack: nodejs_buildpack
   domain: mybluemix.net
-  command: ./node_modules/@angular/cli/bin/ng serve --prod
+  command: npm start --prod
