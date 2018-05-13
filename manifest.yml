@@ -1,6 +1,6 @@
 ---
 applications:
- - name: Pager Scheduler
+- name: Pager Scheduler
   memory: 256M
   buildpack: nodejs_buildpack
   domain: mybluemix.net
