@@ -7,7 +7,7 @@
     "npm": "5.6.0"
   },
   "scripts": {
-    "ng": "./node_modules/@angular/cli/bin/ng",
+    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
