@@ -4,4 +4,4 @@ applications:
   memory: 768M
   buildpack: nodejs_buildpack
   domain: mybluemix.net
-  command: npm start --prod
+  command: npm run start --prod
