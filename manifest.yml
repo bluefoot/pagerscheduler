@@ -4,4 +4,4 @@ applications:
   memory: 192M
   buildpack: nodejs_buildpack
   domain: mybluemix.net
-  command: node server/web-server.js
+  command: ng serve --prod
