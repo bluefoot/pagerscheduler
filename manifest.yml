@@ -1,8 +1,6 @@
 ---
 applications:
 - name: pagerscheduler
-  memory: 768M
-  buildpack: nodejs_buildpack
+  memory: 256M
+  buildpack: staticfile_buildpack
   domain: mybluemix.net
-  command: npm run-script start --prod
-  timeout: 400
