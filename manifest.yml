@@ -1,8 +1,7 @@
 ---
 applications:
- - name: pagerscheduler
-  random-route: true
-  memory: 192M
+ - name: Pager Scheduler
+  memory: 256M
   buildpack: nodejs_buildpack
   domain: mybluemix.net
   command: ng serve --prod
