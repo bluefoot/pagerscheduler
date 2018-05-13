@@ -4,5 +4,5 @@ applications:
   memory: 768M
   buildpack: nodejs_buildpack
   domain: mybluemix.net
-  command: npm run-script start
+  command: npm run-script start --prod
   timeout: 180
