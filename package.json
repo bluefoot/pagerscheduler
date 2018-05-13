@@ -2,6 +2,10 @@
   "name": "pager-scheduler",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,10 +14,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "engines": {
-    "node": "8.11.1",
-    "npm": "5.6.0"
- },
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.2.4",
