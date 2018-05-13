@@ -7,8 +7,8 @@
     "npm": "5.6.0"
   },
   "scripts": {
-    "ng": "ng",
-    "start": "node_modules/.bin/ng serve",
+    "ng": "node_modules/.bin/ng",
+    "start": "ls -la node_modules && ls -la node_modules/.bin/ && node_modules/.bin/ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
