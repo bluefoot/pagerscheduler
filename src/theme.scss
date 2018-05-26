@@ -1,0 +1,87 @@
+/* 
+ * Pager Scheduler angular theme
+ * References: 
+ *  - https://material.angular.io/guide/theming
+ *  - https://alligator.io/angular/angular-material-custom-theme/
+ * @author gewton
+ **/
+@import '~@angular/material/theming';
+@include mat-core();
+
+$ps-yellow-pallete: (
+  50 : #fdf7ed,
+  100 : #faecd1,
+  200 : #f7dfb3,
+  300 : #f3d295,
+  400 : #f1c97e,
+  500 : #eebf67,
+  600 : #ecb95f,
+  700 : #e9b154,
+  800 : #e7a94a,
+  900 : #e29b39,
+  A100 : #ffffff,
+  A200 : #fffcf9,
+  A400 : #ffe6c6,
+  A700 : #ffdbad,
+  contrast: (
+    50 : #544850,
+    100 : #544850,
+    200 : #544850,
+    300 : #544850,
+    400 : #544850,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #544850,
+    A200 : #544850,
+    A400 : #544850,
+    A700 : #544850,
+  )
+);
+
+$ps-accent-pallete: (
+  50 : #faeee9,
+  100 : #f2d5c7,
+  200 : #e9b9a2,
+  300 : #e09d7d,
+  400 : #d98861,
+  500 : #d27345,
+  600 : #cd6b3e,
+  700 : #c76036,
+  800 : #c1562e,
+  900 : #b6431f,
+  A100 : #fff2ee,
+  A200 : #ffcabb,
+  A400 : #ffa188,
+  A700 : #ff8d6e,
+  contrast: (
+    50 : #544850,
+    100 : #544850,
+    200 : #544850,
+    300 : #544850,
+    400 : #544850,
+    500 : #fff,
+    600 : #544850,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$pager-scheduler-primary: mat-palette($ps-yellow-pallete, 500);
+$pager-scheduler-accent:  mat-palette($ps-accent-pallete, 500);
+$pager-scheduler-warn:    mat-palette($mat-deep-orange);
+
+$pager-scheduler-theme: mat-light-theme($pager-scheduler-primary, $pager-scheduler-accent, $pager-scheduler-warn);
+
+$custom-typography: mat-typography-config($font-family: 'Optima');
+
+@include mat-core($custom-typography);
+
+@include angular-material-theme($pager-scheduler-theme);

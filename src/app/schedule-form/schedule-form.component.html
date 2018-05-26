@@ -1,0 +1,36 @@
+<form class="schedule-form">
+  <div class="button-row">
+      <button mat-button>Basic</button>
+      <button mat-button color="primary">Primary</button>
+      <button mat-button color="accent">Accent</button>
+      <button mat-button color="warn">Warn</button>
+      <button mat-button disabled>Disabled</button>
+      <a mat-button routerLink=".">Link</a>
+    </div>
+    
+    <div class="button-row">
+        <button mat-raised-button>Basic</button>
+        <button mat-raised-button color="primary">Primary</button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+        <button mat-raised-button disabled>Disabled</button>
+        <a mat-raised-button routerLink=".">Link</a>
+      </div>
+
+
+      <div class="form-group">
+    <label for="startDate">Select a start date</label>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+  HELLO FORM
+
+
+
+
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" >
+    </mat-form-field>
+
+</form>
