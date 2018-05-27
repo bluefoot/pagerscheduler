@@ -10,9 +10,9 @@ import { Role } from '../schedule.service';
   styleUrls: ['./schedule-form.component.css']
 })
 export class ScheduleFormComponent implements OnInit {
-  private startDate : Date;
-  private scheduleModel : ScheduleModel;
-  private role : any;
+  startDate : Date;
+  scheduleModel : ScheduleModel;
+  role : any;
 
   constructor(private scheduleService: ScheduleService) { }
   ngOnInit() { }
