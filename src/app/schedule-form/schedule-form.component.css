@@ -3,4 +3,87 @@
   background-color:#F4F4F4;
   width:500px;
   padding:20px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-input-item {
+  display:inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin:10px 0;
+}
+
+.form-input-item > label {
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.form-input-item.buttons {
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-self: stretch;
+}
+
+.form-input-item.buttons button {
+  width:150px;
+}
+
+.radio-icon-group {
+  margin:0;
+  padding:0;
+  display: flex;
+  justify-content: center;
+}
+.radio-icon-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right:40px
+}
+.radio-icon-container:last-child {
+  margin-right:0;
+}
+.radio-icon-container .radio-icon {
+  border-radius: 50%;
+  border: 2px solid #f2d5c7;
+  width: 54px;
+  height: 54px;
+  background-color: #faecd1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor:pointer;
+}
+.radio-icon-container .radio-icon mat-icon {
+  height: 35px;
+  width:inherit;
+}
+
+.radio-icon-container label > input {
+  visibility: hidden;
+  position: absolute;
+}
+
+::ng-deep .radio-icon-container .radio-icon mat-icon svg g {
+  fill: #f2d5c7;
+}
+
+.radio-icon-container .radio-icon:hover, 
+.radio-icon-container .radio-icon-form-wrap > input:checked + .radio-icon {
+  /* border:2px solid #d27345; */
+  background-color:#eebf67;
+  border-color:#d27345;
+}
+
+::ng-deep .radio-icon-container .radio-icon:hover mat-icon svg g,
+::ng-deep .radio-icon-container .radio-icon-form-wrap > input:checked + .radio-icon mat-icon svg g {
+  fill: #d27345;
+}
+
+.radio-icon-text {
+  font-size:14px;
 }
