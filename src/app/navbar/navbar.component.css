@@ -1,0 +1,18 @@
+
+header {
+  margin:30px 20px;
+}
+.main-title {
+  text-transform: uppercase;
+  font-size:30px;
+}
+
+@media all and (min-width: 450px) {
+  header {
+    margin:30px 40px;
+  }
+
+  .main-title {
+    font-size:20px;
+  }
+}

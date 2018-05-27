@@ -1,0 +1,52 @@
+<form class="schedule-form">
+  <div class="form-input-item">
+    <label for="startDate">Select a start date</label>
+    <mat-form-field>
+      <input name="startDate" matInput [matDatepicker]="startDatePicker" [(ngModel)]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="form-input-item">
+    <label>Select a model</label>
+    <ul class="radio-icon-group">
+      <li *ngFor="let schedule of getValues(scheduleModels)" class="radio-icon-container">
+        <label class="radio-icon-form-wrap">
+          <input type="radio" name="model" [value]="schedule.title" [(ngModel)]="scheduleModel" />
+          <div class="radio-icon">
+            <mat-icon [svgIcon]="schedule.image"></mat-icon>
+          </div>
+        </label>
+        <div class="radio-icon-text">
+          {{schedule.title}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-input-item">
+    <label>Select your role</label>
+    <ul class="radio-icon-group">
+      <li *ngFor="let r of roles" class="radio-icon-container">
+        <label class="radio-icon-form-wrap">
+          <input type="radio" name="role" [value]="r" [(ngModel)]="role" />
+          <div class="radio-icon">
+            <mat-icon [svgIcon]="r.image"></mat-icon>
+          </div>
+        </label>
+        <div class="radio-icon-text">
+          {{r.description}}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="false && startDate && role">
+  Selected schedule start date is: {{startDate.toDateString()}}<br/>
+  Selected schedule model is: {{scheduleModel}}<br/>
+  Selected schedule role is: {{role.description}}<br/>
+  </div>
+  <div class="form-input-item buttons">
+    <button mat-raised-button color="primary">Preview</button>
+    <button mat-raised-button color="accent">Create Schedule</button>
+  </div>
+</form>

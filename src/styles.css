@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files 
+@import './theme.scss';*/
+
+html,body {
+  background-color:#F8F7F8;
+  margin:0;
+}
+
+app-root {
+  display:flex;
+  flex-direction: column;
+}
+
+app-root app-navbar {
+  background-color:#fff;
+}
+  
+/* app-root app-home {
+  flex-grow:1;
+  display:flex;
+}
+
+app-root app-home .wrap {
+  align-items: stretch;
+  width:100%;
+}
+ */
+
+
+
+
+
+@font-face {
+  font-family: 'Optima';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Optima'), url('/assets/fonts/optima.woff') format('woff');
+}
+  
+  
+@font-face {
+  font-family: 'Optima';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Optima Bold'), url('/assets/fonts/optima_bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Menlo';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Menlo Regular'), url('/assets/fonts/menlo.woff') format('woff');
+}
+
+html {
+  color:#544850;
+}
+
+* {
+  font-family:Optima, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight:bold;
+}
+
+code, pre {
+  font-family: Menlo, Consolas, "Courier New", monospace;
+}
