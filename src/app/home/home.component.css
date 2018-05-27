@@ -1,12 +1,18 @@
-main.wrap {
+/* main.wrap {
   background-color:#F8F7F8;
   display:flex;
-}
+} */
 
 .form-wrap {
   display:flex;
   flex-direction: column;
-  margin:20px auto;
-  align-items: center;
+  margin:0 auto;
+  align-items: stretch;
   justify-content: center;
+}
+
+@media all and (min-width: 450px) {
+  .form-wrap {
+    margin:20px auto;
+  }
 }
