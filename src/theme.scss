@@ -3,26 +3,28 @@
  * References: 
  *  - https://material.angular.io/guide/theming
  *  - https://alligator.io/angular/angular-material-custom-theme/
+ *  - https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+ *  - http://mcg.mbitson.com/
  * @author gewton
  **/
 @import '~@angular/material/theming';
 @include mat-core();
 
 $ps-yellow-pallete: (
-  50 : #fdf7ed,
-  100 : #faecd1,
-  200 : #f7dfb3,
-  300 : #f3d295,
-  400 : #f1c97e,
-  500 : #eebf67,
-  600 : #ecb95f,
-  700 : #e9b154,
-  800 : #e7a94a,
-  900 : #e29b39,
+  50 : #fef7eb,
+  100 : #fceccc,
+  200 : #fadfaa,
+  300 : #f8d288,
+  400 : #f7c86f,
+  500 : #f5be55,
+  600 : #f4b84e,
+  700 : #f2af44,
+  800 : #f0a73b,
+  900 : #ee992a,
   A100 : #ffffff,
   A200 : #fffcf9,
-  A400 : #ffe6c6,
-  A700 : #ffdbad,
+  A400 : #ffe5c6,
+  A700 : #ffdaad,
   contrast: (
     50 : #544850,
     100 : #544850,
@@ -42,20 +44,20 @@ $ps-yellow-pallete: (
 );
 
 $ps-accent-pallete: (
-  50 : #faeee9,
-  100 : #f2d5c7,
-  200 : #e9b9a2,
-  300 : #e09d7d,
-  400 : #d98861,
-  500 : #d27345,
-  600 : #cd6b3e,
-  700 : #c76036,
-  800 : #c1562e,
-  900 : #b6431f,
-  A100 : #fff2ee,
-  A200 : #ffcabb,
-  A400 : #ffa188,
-  A700 : #ff8d6e,
+  50 : #fbeee7,
+  100 : #f5d4c3,
+  200 : #efb79c,
+  300 : #e99a74,
+  400 : #e48456,
+  500 : #df6e38,
+  600 : #db6632,
+  700 : #d75b2b,
+  800 : #d25124,
+  900 : #ca3f17,
+  A100 : #fffdfc,
+  A200 : #ffd4c9,
+  A400 : #ffaa96,
+  A700 : #ff967d,
   contrast: (
     50 : #544850,
     100 : #544850,
