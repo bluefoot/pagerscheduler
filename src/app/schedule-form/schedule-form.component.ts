@@ -5,9 +5,12 @@ import { GoogleAuthenticationService } from '../google-authentication.service';
 import { GoogleCalendarService } from '../google-calendar.service';
 import { ScheduleService } from '../schedule.service';
 import { Role } from '../schedule.service';
+import { DayOfWeekPipe } from '../day-of-week.pipe';
 
 import { MatSnackBar } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-schedule-form',
@@ -26,7 +29,8 @@ export class ScheduleFormComponent implements OnInit {
     public googleAuthenticationService: GoogleAuthenticationService,
     private googleCalendarService: GoogleCalendarService,
     public snackBar: MatSnackBar,
-    public dialog: MatDialog) { 
+    public dialog: MatDialog,
+    private dayOfWeekPipe: DayOfWeekPipe) { 
   }
   
   ngOnInit() {
@@ -40,6 +44,23 @@ export class ScheduleFormComponent implements OnInit {
     this.googleAuthenticationService.login()
     .then(() => {this.displayMessage('Logged in successfully')})
     .catch((error:any) => {this.displayMessage(error)});
+  }
+
+  get invalidDateErrorMessage() {
+    if(this.scheduleModel) {
+      return `The selected model “${this.scheduleModel.title}” is supposed to start on a <strong>${this.dayOfWeekPipe.transform(this.scheduleModel.preferredDay)}</strong>`;
+    } else {
+      return '';
+    }
+  }
+  
+  validateDate() {
+    if(this.startDate && this.scheduleModel) {
+      if(this.scheduleModel.preferredDay!=moment(this.startDate).format('ddd')) {
+        return false;
+      }
+    }
+    return true;
   }
 
   private displayMessage(msg:string) {
