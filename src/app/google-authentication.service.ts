@@ -72,10 +72,11 @@ export class GoogleAuthenticationService {
 						if(immediate && 
 							authenticationResult.error && authenticationResult.error == 'immediate_failed') {
 							// this means pager was trying to auto authenticate but user was 
-							// not previously logged. So don't show errors.
-							resolve();
+							// not previously logged
+							reject('User not previously logged in. Need to log in explicitly first');
+						} else {
+							reject(authenticationResult.error);
 						}
-						reject(new Error(authenticationResult.error));
 					}
 				}
 			);
