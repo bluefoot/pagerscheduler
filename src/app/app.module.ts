@@ -22,6 +22,7 @@ import { EventsCreatedInfoDialog } from './schedule-form/schedule-form.component
 // External stuff
 import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
 import { DayOfWeekPipe } from './day-of-week.pipe';
+import { ValidIfDirective } from './valid-if.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DayOfWeekPipe } from './day-of-week.pipe';
     HomeComponent,
     ScheduleFormComponent,
     EventsCreatedInfoDialog,
-    DayOfWeekPipe
+    DayOfWeekPipe,
+    ValidIfDirective
   ],
   entryComponents: [EventsCreatedInfoDialog],
   imports: [
@@ -48,7 +50,7 @@ import { DayOfWeekPipe } from './day-of-week.pipe';
       {disableBtn: true}
     ),
   ],
-  providers: [],
+  providers: [DayOfWeekPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
