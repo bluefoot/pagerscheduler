@@ -18,7 +18,8 @@ export class ScheduleService {
       let classicSM : ScheduleModel = new ScheduleModel();
       classicSM.title = 'Classic';
       classicSM.image = 'model-classic';
-      classicSM.caption = 'Classic Schedule. Starts on tuesday 14 MT, handover every day at 14 MT';
+      classicSM.caption = 'Classic Schedule. Starts on Tuesday 14 MT, handover every day at 14 MT. No longer used as of March 2018.';
+      classicSM.preferredDay = 'Tue';
       let classicSMSchedule = [
         {personA : {start:'20:00', duration:24}, personB : {}},   //tue
         {personA : {}, personB : {start:'20:00', duration:24}},   //wed
@@ -36,6 +37,7 @@ export class ScheduleService {
       secondQ2018SM.title = '2Q2018';
       secondQ2018SM.image = 'model-2q2018';
       secondQ2018SM.caption = 'Schedule from 2Q2018. Starts on Monday 0H BRT, handover mostly at 0H BRT with some exceptions';
+      secondQ2018SM.preferredDay = 'Mon';
       let secondQ2018SMSchedule = [
         {personA : {start:'03:00', duration:18}, personB : {start:'21:00', duration:30}},   //mon
         {personA : {}, personB : {}},                                                       //tue

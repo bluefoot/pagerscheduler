@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatDatepickerModule, MatNativeDateModule,
   MatInputModule, MatFormFieldModule, MatIconModule, MatSnackBarModule,
-  MatDialogModule } from '@angular/material';
+  MatDialogModule, MatTooltipModule } from '@angular/material';
 
 // App stuff
 import { AppRoutes } from './routes';
@@ -21,6 +21,7 @@ import { EventsCreatedInfoDialog } from './schedule-form/schedule-form.component
 
 // External stuff
 import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
+import { DayOfWeekPipe } from './day-of-week.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
     NavbarComponent,
     HomeComponent,
     ScheduleFormComponent,
-    EventsCreatedInfoDialog
+    EventsCreatedInfoDialog,
+    DayOfWeekPipe
   ],
   entryComponents: [EventsCreatedInfoDialog],
   imports: [
@@ -41,7 +43,7 @@ import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,MatFormFieldModule,MatIconModule,
-    MatSnackBarModule,MatDialogModule,
+    MatSnackBarModule,MatDialogModule,MatTooltipModule,
     Angular2PromiseButtonModule.forRoot(
       {disableBtn: true}
     ),

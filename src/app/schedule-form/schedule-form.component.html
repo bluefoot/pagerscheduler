@@ -16,7 +16,7 @@
     <label>Select a model</label>
     <ul class="radio-icon-group">
       <li *ngFor="let schedule of getValues(scheduleModels)" class="radio-icon-container">
-        <label class="radio-icon-form-wrap">
+        <label class="radio-icon-form-wrap" matTooltip="{{schedule.caption + ' You should set the start date to a ' + (schedule.preferredDay | dayOfWeek) + ', unless you are trying out something.'}}">
           <input type="radio" name="model" [value]="schedule.title" [(ngModel)]="scheduleModelId" />
           <div class="radio-icon">
             <mat-icon [svgIcon]="schedule.image"></mat-icon>
