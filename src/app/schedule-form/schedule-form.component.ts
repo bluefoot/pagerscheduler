@@ -15,10 +15,10 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./schedule-form.component.css']
 })
 export class ScheduleFormComponent implements OnInit {
-  private startDate : Date;
-  private scheduleModel : ScheduleModel;
+  private _startDate : Date;
+  private _scheduleModel : ScheduleModel;
   private _scheduleModelId : string;
-  private role : any;
+  private _role : any;
 
   createSchedulePromise: Promise<any>;
   
@@ -58,6 +58,30 @@ export class ScheduleFormComponent implements OnInit {
 
   get roles() : Array<any> {
     return Object.values(Role);
+  }
+
+  get startDate():Date {
+    return this._startDate;
+  }
+
+  set startDate(value:Date) {
+    this._startDate = value;
+  }
+
+  get scheduleModel():ScheduleModel {
+    return this._scheduleModel;
+  }
+
+  set scheduleModel(value:ScheduleModel) {
+    this._scheduleModel = value;
+  }
+
+  get role() {
+    return this._role;
+  }
+
+  set role(value:any) {
+    this._role = value;
   }
 
   getValues(map){
