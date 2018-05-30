@@ -8,7 +8,8 @@ import { Role } from '../schedule.service';
 import { DayOfWeekPipe } from '../day-of-week.pipe';
 
 import { MatSnackBar } from '@angular/material';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 
 import * as moment from 'moment';
 
@@ -30,7 +31,8 @@ export class ScheduleFormComponent implements OnInit {
     private googleCalendarService: GoogleCalendarService,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private dayOfWeekPipe: DayOfWeekPipe) { 
+    private dayOfWeekPipe: DayOfWeekPipe,
+    private bottomSheet: MatBottomSheet) { 
   }
   
   ngOnInit() {
@@ -114,7 +116,9 @@ export class ScheduleFormComponent implements OnInit {
   }
 
   displayModelHelpDialog(schedule:ScheduleModel) {
-    alert(this.getScheduleModelTooltipText(schedule));
+    this.bottomSheet.open(ScheduleModelHelpSheet, {
+      data: {message:this.getScheduleModelTooltipText(schedule)}
+    });
   }
 
   createSchedule() {
@@ -193,4 +197,25 @@ export class EventsCreatedInfoDialog {
     this.dialogRef.close();
   }
 
+}
+
+@Component({
+  selector: 'app-schedule-model-help-sheet',
+  template: `
+    <div style="background-color:white">
+      <p [innerHtml]="data.message"></p>
+      <a href="#" (click)="close($event)">
+        <span mat-line>Close</span>
+       </a>
+    </div>
+  `,
+})
+export class ScheduleModelHelpSheet {
+  constructor(private bottomSheetRef: MatBottomSheetRef<ScheduleModelHelpSheet>,
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {}
+
+  close(event: MouseEvent): void {
+    this.bottomSheetRef.dismiss();
+    event.preventDefault();
+  }
 }
