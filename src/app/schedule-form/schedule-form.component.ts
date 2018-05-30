@@ -109,6 +109,14 @@ export class ScheduleFormComponent implements OnInit {
     return Array.from(map.values());
   }
 
+  getScheduleModelTooltipText(schedule:ScheduleModel) {
+    return `${schedule.caption} If you select this model, you should set the start date to a ${this.dayOfWeekPipe.transform(schedule.preferredDay)}, unless you are trying something out.`;
+  }
+
+  displayModelHelpDialog(schedule:ScheduleModel) {
+    alert(this.getScheduleModelTooltipText(schedule));
+  }
+
   createSchedule() {
     if(!this.googleAuthenticationService.isAuthenticated) {
       let scheduleFormComponent = this; //https://stackoverflow.com/q/34930771

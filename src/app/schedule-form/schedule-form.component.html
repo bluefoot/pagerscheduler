@@ -19,14 +19,14 @@
     <label>Select a model</label>
     <ul class="radio-icon-group">
       <li *ngFor="let schedule of getValues(scheduleModels)" class="radio-icon-container">
-        <label class="radio-icon-form-wrap" matTooltip="{{schedule.caption + ' You should set the start date to a ' + (schedule.preferredDay | dayOfWeek) + ', unless you are trying out something.'}}">
+        <label class="radio-icon-form-wrap" [matTooltip]="getScheduleModelTooltipText(schedule)">
           <input type="radio" name="model" [value]="schedule.title" [(ngModel)]="scheduleModelId" />
           <div class="radio-icon">
             <mat-icon [svgIcon]="schedule.image"></mat-icon>
           </div>
         </label>
         <div class="radio-icon-text">
-          {{schedule.title}}
+          <span>{{schedule.title}}<a class="schedule-model-help-button" href="javascript:;" (click)="displayModelHelpDialog(schedule)" title="Help"><mat-icon class="help-icon" svgIcon="help"></mat-icon></a></span>
         </div>
       </li>
     </ul>
