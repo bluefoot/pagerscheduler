@@ -98,9 +98,22 @@
   margin-top:10px;
 }
 
+.help-icon {
+  height:15px;
+}
+
+::ng-deep .help-icon svg {
+  fill:#437AD2;
+}
+
+::ng-deep .help-icon:hover svg {
+  fill:#375793;
+}
+
 /*Tooltip*/
 ::ng-deep .mat-tooltip {
   background-color:rgba(245, 190, 85, 0.90);
+  font-size:14px;
 }
 
 /* STYLE FOR SPINNER ON BUTTON
@@ -247,5 +260,9 @@ BASED ON  https://github.com/johannesjo/angular2-promise-buttons
   .form-input-item.buttons button {
     margin:0;
     width:150px;
+  }
+
+  .schedule-model-help-button {
+    display:none;
   }
 }

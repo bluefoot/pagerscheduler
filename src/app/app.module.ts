@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatDatepickerModule, MatNativeDateModule,
   MatInputModule, MatFormFieldModule, MatIconModule, MatSnackBarModule,
-  MatDialogModule, MatTooltipModule } from '@angular/material';
+  MatDialogModule, MatTooltipModule, MatBottomSheetModule } from '@angular/material';
 
 // App stuff
 import { AppRoutes } from './routes';
@@ -18,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
 import { EventsCreatedInfoDialog } from './schedule-form/schedule-form.component';
+import { ScheduleModelHelpSheet } from './schedule-form/schedule-form.component';
 
 // External stuff
 import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
@@ -31,10 +32,11 @@ import { ValidIfDirective } from './valid-if.directive';
     HomeComponent,
     ScheduleFormComponent,
     EventsCreatedInfoDialog,
+    ScheduleModelHelpSheet,
     DayOfWeekPipe,
     ValidIfDirective
   ],
-  entryComponents: [EventsCreatedInfoDialog],
+  entryComponents: [EventsCreatedInfoDialog, ScheduleModelHelpSheet],
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
@@ -46,6 +48,7 @@ import { ValidIfDirective } from './valid-if.directive';
     MatNativeDateModule,
     MatInputModule,MatFormFieldModule,MatIconModule,
     MatSnackBarModule,MatDialogModule,MatTooltipModule,
+    MatBottomSheetModule,
     Angular2PromiseButtonModule.forRoot(
       {disableBtn: true}
     ),
