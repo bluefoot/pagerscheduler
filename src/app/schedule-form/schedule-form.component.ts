@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ScheduleModel } from '../schedule-model';
+import { GoogleAuthenticationService } from '../google-authentication.service';
+import { GoogleCalendarService } from '../google-calendar.service';
 import { ScheduleService } from '../schedule.service';
 import { Role } from '../schedule.service';
 
@@ -12,10 +14,19 @@ import { Role } from '../schedule.service';
 export class ScheduleFormComponent implements OnInit {
   private startDate : Date;
   private scheduleModel : ScheduleModel;
+  private _scheduleModelId : string;
   private role : any;
-
-  constructor(private scheduleService: ScheduleService) { }
+  
+  constructor(private scheduleService: ScheduleService, 
+    private googleAuthenticationService: GoogleAuthenticationService,
+    private googleCalendarService: GoogleCalendarService) { 
+  }
+  
   ngOnInit() { }
+
+  set scheduleModelId(value:string) {
+    this.scheduleModel = this.scheduleModels.get(value);
+  }
 
   get scheduleModels() {
     return this.scheduleService.getScheduleModels();
@@ -27,5 +38,9 @@ export class ScheduleFormComponent implements OnInit {
 
   getValues(map){
     return Array.from(map.values());
+  }
+
+  createSchedule() {
+    this.googleCalendarService.insertSchedule(this.startDate, this.scheduleModel, this.role);
   }
 }
