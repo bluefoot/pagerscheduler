@@ -28,11 +28,13 @@ export class GoogleAuthenticationService {
   constructor() { }
 	
 	loadApiAndAuthenticateIfNeeded() {
+		let googleAuthService = this;
 		return new Promise((resolve, reject) => {
-			gapi.load('client:auth2', 
-				this.internalAuthenticate(true)
-				.then(() => resolve())
-				.catch((error:any) => reject(error))
+			gapi.load('client:auth2', function() {
+					googleAuthService.internalAuthenticate(true)
+					.then(() => resolve())
+					.catch((error:any) => reject(error))
+				}
 			);
 		});
 	}
@@ -45,9 +47,8 @@ export class GoogleAuthenticationService {
 		 return new Promise((resolve, reject) => {
 			 this.proceedAuthentication(immediate)
 		 	 .then(() => this.initializeGoogleCalendarAPI())
-			 .then((response:any) => {/*console.log(response)*/})
-			 .then(() => resolve()) 
-		   .catch((error:any) => reject(new Error('authentication failed: ' + error)));
+			 .then(() => resolve())
+		   .catch((error:any) => reject('authentication failed: ' + error));
 		});
   }
   
@@ -83,7 +84,13 @@ export class GoogleAuthenticationService {
   
   private initializeGoogleCalendarAPI(){
 		return new Promise((resolve, reject) => {
-			resolve(gapi.client.load('calendar', 'v3'));
+			try {
+				gapi.client.load('calendar', 'v3', function() {
+					resolve();
+				});
+			} catch(e) {
+				reject(e);
+			}
 		});
   }
 }

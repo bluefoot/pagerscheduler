@@ -1,5 +1,5 @@
 <div *ngIf="!googleAuthenticationService.isAuthenticated">You are not authenticated
-  <button mat-raised-button color="primary" (click)="googleAuthenticationService.login()">Login with Google</button>
+  <button mat-raised-button color="primary" (click)="login()">Login with Google</button>
 </div>
 <div *ngIf="googleAuthenticationService.isAuthenticated">You are authenticated
 </div>
@@ -51,7 +51,7 @@
   Selected schedule role is: {{role.description}}<br/>
   </div>
   <div class="form-input-item buttons">
-    <button mat-raised-button color="primary" [disabled]="!startDate || !scheduleModel || !role">Preview</button>
-    <button mat-raised-button color="accent" [disabled]="!startDate || !scheduleModel || !role" (click)="createSchedule()">Create Schedule</button>
+    <button mat-raised-button color="primary" [disabled]="!startDate || !scheduleModel || !role" [promiseBtn]="createSchedulePromise">Preview</button>
+    <button mat-raised-button color="accent" [disabled]="!startDate || !scheduleModel || !role" (click)="createSchedule()" [promiseBtn]="createSchedulePromise">Create Schedule</button>
   </div>
 </form>

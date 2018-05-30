@@ -3,6 +3,7 @@
  * - https://github.com/stefanreichert/angular2-google-calendar-example
  * - https://developers.google.com/calendar/quickstart/js
  * - https://developers.google.com/calendar/create-events
+ * - https://developers.google.com/api-client-library/javascript/features/promises
  */
 import { Injectable } from '@angular/core';
 import { ScheduleModel } from './schedule-model';
@@ -26,6 +27,8 @@ export class GoogleCalendarService {
    * @param role the selected role
    */
   insertSchedule(startDate : Date, scheduleModel : ScheduleModel, role : any) {
+    let promises = [];
+    if(!scheduleModel || !scheduleModel.schedule) return Promise.reject('Malformed Schedule Model');
     for (var _i = 0; _i < scheduleModel.schedule.length; _i++) {
       let event:any = this.getEventForRole(role, scheduleModel.schedule[_i]);
       if(event.start) {
@@ -48,9 +51,10 @@ export class GoogleCalendarService {
         };
 
         // create event
-        this.createEvent(gcalEvent);
+        promises.push(this.createEvent(gcalEvent));
       }
     }
+    return Promise.all(promises);
   }
 
   /**
@@ -96,15 +100,21 @@ export class GoogleCalendarService {
    * Creates an event on Google Calendar
    * @param event a set of event fields. See https://developers.google.com/calendar/v3/reference/events
    */
-  private createEvent(event:any) {
-    var request = gapi.client.calendar.events.insert({
-      'calendarId': 'primary',
-      'resource': event
-    });
-
-    request.execute(function(event) {
-      console.log('Event created: ' + event.htmlLink);
-    });
+  private createEvent(event:any): Promise<any> {
+    try {
+      var request = gapi.client.calendar.events.insert({
+        'calendarId': 'primary',
+        'resource': event
+      });
+      return request;
+    } catch (e) {
+      return Promise.reject('Unable to create event: ' + e);
+    }
+    /* Old syntax:
+      request.execute(function(event) {
+        console.log('Event created: ' + event.htmlLink);
+      });
+    */
   }
 
   /**
