@@ -6,6 +6,9 @@ import { GoogleCalendarService } from '../google-calendar.service';
 import { ScheduleService } from '../schedule.service';
 import { Role } from '../schedule.service';
 
+import { MatSnackBar } from '@angular/material';
+
+
 @Component({
   selector: 'app-schedule-form',
   templateUrl: './schedule-form.component.html',
@@ -19,10 +22,21 @@ export class ScheduleFormComponent implements OnInit {
   
   constructor(private scheduleService: ScheduleService, 
     private googleAuthenticationService: GoogleAuthenticationService,
-    private googleCalendarService: GoogleCalendarService) { 
+    private googleCalendarService: GoogleCalendarService,
+    public snackBar: MatSnackBar) { 
   }
   
-  ngOnInit() { }
+  ngOnInit() {
+    this.googleAuthenticationService.loadApiAndAuthenticateIfNeeded()
+    // .then((response:any) => {/*console.log(response)*/})
+    .catch((error:any) => {this.displayError(error)});
+  }
+
+  displayError(msg:string) {
+    this.snackBar.open(msg, 'Close', {
+      duration: 2000,
+    });
+  }
 
   set scheduleModelId(value:string) {
     this.scheduleModel = this.scheduleModels.get(value);

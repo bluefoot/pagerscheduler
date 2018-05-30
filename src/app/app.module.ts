@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Material stuff
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatDatepickerModule, MatNativeDateModule,
-  MatInputModule, MatFormFieldModule, MatIconModule } from '@angular/material';
+  MatInputModule, MatFormFieldModule, MatIconModule, MatSnackBarModule } from '@angular/material';
 
 // App stuff
 import { AppRoutes } from './routes';
@@ -33,7 +33,7 @@ import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule,MatFormFieldModule,MatIconModule
+    MatInputModule,MatFormFieldModule,MatIconModule,MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

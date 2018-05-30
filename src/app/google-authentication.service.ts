@@ -25,26 +25,34 @@ export class GoogleAuthenticationService {
 
   public isAuthenticated: boolean = false;
   
-  constructor() {
-		gapi.load('client:auth2', this.internalAuthenticate(true));
-  }
+  constructor() { }
+	
+	loadApiAndAuthenticateIfNeeded() {
+		return new Promise((resolve, reject) => {
+			gapi.load('client:auth2', 
+				this.internalAuthenticate(true)
+				.then(() => resolve())
+				.catch((error:any) => reject(error))
+			);
+		});
+	}
 
   login() {
-		console.log('proceed login');
-    // check the authentication and present a dialog on failure
-    this.internalAuthenticate(false);
+    return this.internalAuthenticate(false);
   }
 
   private internalAuthenticate(immediate: boolean){
-		 return this.proceedAuthentication(immediate)
-		 .then(() => this.initializeGoogleCalendarAPI())
-		 .then((response:any) => console.log(response))
-		 .catch((error:any) => {console.log('authentication failed: ' + error)});
+		 return new Promise((resolve, reject) => {
+			 this.proceedAuthentication(immediate)
+		 	 .then(() => this.initializeGoogleCalendarAPI())
+			 .then((response:any) => {/*console.log(response)*/})
+			 .then(() => resolve()) 
+		   .catch((error:any) => reject(new Error('authentication failed: ' + error)));
+		});
   }
   
 	private proceedAuthentication(immediate:boolean){
 		return new Promise((resolve, reject) => {
-			console.log('proceed authentication - immediate: ' + immediate);
 			gapi.client.setApiKey(GoogleAuthenticationService.API_KEY);
 			var authorisationRequestData =
 			{
@@ -54,15 +62,18 @@ export class GoogleAuthenticationService {
 			} 
 			gapi.auth.authorize(authorisationRequestData,
 				(authenticationResult) => {
-          console.log('result:' + authenticationResult);
-          console.log(authenticationResult);
-          console.log('error?' + authenticationResult.error);
 					if(authenticationResult && !authenticationResult.error){
 						this.isAuthenticated = true
 						resolve()
 					}
 					else {
 						this.isAuthenticated = false
+						if(immediate && 
+							authenticationResult.error && authenticationResult.error == 'immediate_failed') {
+							// this means pager was trying to auto authenticate but user was 
+							// not previously logged. So don't show errors.
+							resolve();
+						}
 						reject(new Error(authenticationResult.error));
 					}
 				}
@@ -72,7 +83,6 @@ export class GoogleAuthenticationService {
   
   private initializeGoogleCalendarAPI(){
 		return new Promise((resolve, reject) => {
-			console.log('initialize Google Calendar API');
 			resolve(gapi.client.load('calendar', 'v3'));
 		});
   }
