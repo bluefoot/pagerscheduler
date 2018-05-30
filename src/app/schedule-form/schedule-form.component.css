@@ -98,6 +98,11 @@
   margin-top:10px;
 }
 
+/*Tooltip*/
+::ng-deep .mat-tooltip {
+  background-color:rgba(245, 190, 85, 0.90);
+}
+
 /* STYLE FOR SPINNER ON BUTTON
 BASED ON  https://github.com/johannesjo/angular2-promise-buttons
 */
