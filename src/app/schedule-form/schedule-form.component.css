@@ -28,14 +28,16 @@
 .form-input-item.buttons .mat-flat-button, 
 .form-input-item.buttons .mat-fab, 
 .form-input-item.buttons .mat-mini-fab {
-  font-size:20px;
-  font-weight:bold;
+  font-size:18px;
+  font-weight:normal;
 }
 
 .form-input-item.buttons button {
   margin-bottom:20px;
   width:50%;
   min-width:200px;
+  padding-top:3px;
+  padding-bottom:3px;
 }
 
 .radio-icon-group {
@@ -82,18 +84,129 @@
 .radio-icon-container .radio-icon:hover, 
 .radio-icon-container .radio-icon-form-wrap > input:checked + .radio-icon {
   /* border:2px solid #d27345; */
-  background-color:#eebf67;
-  border-color:#d27345;
+  background-color:#f5be55;
+  border-color:#df6e38;
 }
 
 ::ng-deep .radio-icon-container .radio-icon:hover mat-icon svg g,
 ::ng-deep .radio-icon-container .radio-icon-form-wrap > input:checked + .radio-icon mat-icon svg g {
-  fill: #d27345;
+  fill: #df6e38;
 }
 
 .radio-icon-text {
   font-size:18px;
   margin-top:10px;
+}
+
+/* STYLE FOR SPINNER ON BUTTON
+BASED ON  https://github.com/johannesjo/angular2-promise-buttons
+*/
+
+@-webkit-keyframes three-quarters {
+  0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes three-quarters {
+  0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes three-quarters {
+  0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes three-quarters {
+  0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
+
+::ng-deep button .btn-spinner {
+  font-family: sans-serif;
+  font-weight: 100;
+  -webkit-animation: three-quarters 1250ms infinite linear;
+  -moz-animation: three-quarters 1250ms infinite linear;
+  -ms-animation: three-quarters 1250ms infinite linear;
+  -o-animation: three-quarters 1250ms infinite linear;
+  animation: three-quarters 1250ms infinite linear;
+  border: 3px solid #ca3f17;
+  border-right-color: transparent;
+  border-radius: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  vertical-align: -10% /*middle*/;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 18px;
+  height: 18px;
+}
+
+::ng-deep button .btn-spinner:not(:required) {
+  margin-left: -22px;
+  opacity: 0;
+  transition: 0.4s margin ease-out,
+  0.2s opacity ease-out;
+}
+
+::ng-deep button.is-loading .btn-spinner {
+  transition: 0.2s margin ease-in,
+  0.4s opacity ease-in;
+  margin-left: 5px;
+  opacity: 1;
 }
 
 @media all and (min-width: 450px) {
@@ -124,17 +237,6 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-self: stretch;
-  }
-
-  .form-input-item.buttons .mat-button,
-  .form-input-item.buttons .mat-raised-button, 
-  .form-input-item.buttons .mat-icon-button, 
-  .form-input-item.buttons .mat-stroked-button, 
-  .form-input-item.buttons .mat-flat-button, 
-  .form-input-item.buttons .mat-fab, 
-  .form-input-item.buttons .mat-mini-fab {
-    font-size:16px;
-    font-weight:bold;
   }
 
   .form-input-item.buttons button {

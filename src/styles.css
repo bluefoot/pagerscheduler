@@ -56,6 +56,16 @@ html {
   color:#544850;
 }
 
+a {
+  text-decoration:none;
+  color:#ee992a;
+  outline-color:#fadfaa;
+}
+
+a:hover {
+  color:#df6e38;
+}
+
 * {
   font-family:Optima, Helvetica, Arial, sans-serif;
 }
