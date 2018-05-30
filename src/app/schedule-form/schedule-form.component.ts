@@ -23,7 +23,7 @@ export class ScheduleFormComponent implements OnInit {
   createSchedulePromise: Promise<any>;
   
   constructor(private scheduleService: ScheduleService, 
-    private googleAuthenticationService: GoogleAuthenticationService,
+    public googleAuthenticationService: GoogleAuthenticationService,
     private googleCalendarService: GoogleCalendarService,
     public snackBar: MatSnackBar,
     public dialog: MatDialog) { 
