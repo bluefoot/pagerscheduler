@@ -2,14 +2,23 @@
 header {
   padding:0 20px;
   display:flex;
-  justify-content: space-between;
   height:83px;
+  align-items: center;
 }
 
-header > div {
+header .menus {
+  justify-content: center;
   display:flex;
   flex-wrap: nowrap;
   align-items: center;
+  width:100%;
+  position: fixed;
+  bottom: 0;
+  height: auto;
+  background-color: #fff;
+  left: 0;
+  padding: 10px 0;
+  z-index:1000;
 }
 
 .main-title {
@@ -17,6 +26,7 @@ header > div {
   font-size:30px;
   margin:0;
   margin-right:20px;
+  white-space: nowrap;
 }
 
 .navbar-menu {
@@ -38,24 +48,12 @@ header > div {
 }
 
 .navbar-menu a {
-  color:#bcb5b9;
+  color:#ee6723;
   font-size:14px;
   display: flex;
   align-items: center;
   width:110px;
   justify-content: center;
-}
-
-.navbar-menu a:hover {
-  background-color:#F8F7F8;
-}
-
-.navbar-menu a.special-link {
-  color:#ee6723;
-}
-.navbar-menu a.special-link:hover {
-  background-color:#ee6723;
-  color:#fff;
 }
 
 @media all and (min-width: 450px) {
@@ -66,4 +64,32 @@ header > div {
   .main-title {
     font-size:20px;
   }
+
+  header .menus {
+    height:100%;
+    position:static;
+    background-color:transparent;
+    padding:0;
+    justify-content: space-between;
+  }
+
+  header .menus .right {
+    margin-left: auto;
+  }
+
+  .navbar-menu a {
+    color:#bcb5b9;
+  }
+
+  .navbar-menu a:hover {
+    background-color:#F8F7F8;
+  }
+
+  .navbar-menu a.special-link {
+    color:#ee6723;
+  }
+  .navbar-menu a.special-link:hover {
+    background-color:#ee6723;
+    color:#fff;
+  }  
 }
