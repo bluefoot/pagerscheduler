@@ -37,7 +37,7 @@ export class ScheduleFormComponent implements OnInit {
   
   ngOnInit() {
     this.googleAuthenticationService.loadApiAndAuthenticateIfNeeded()
-    .then((response:any) => {this.displayMessage('You are authenticated with google')})
+    .then((response:any) => {this.displayMessage('You are authenticated with Google')})
     // This should fail silently. Here's the code in case a message should've been shown
     //.catch((error:any) => {this.displayMessage(error)});
   }
@@ -145,7 +145,13 @@ export class ScheduleFormComponent implements OnInit {
         });
       });
     })
-    .catch((error:any) => {this.displayMessage(error)});
+    .catch((error:any) => {
+      let errorMessage = 'Error: ' + error;
+      if(error.result && error.result.error) {
+        errorMessage = 'Error: ' + error.result.error.message;
+      }
+      this.displayMessage(errorMessage)
+    });
   }
 }
 
