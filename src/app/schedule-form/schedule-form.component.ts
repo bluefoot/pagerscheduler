@@ -188,15 +188,9 @@ export class ScheduleFormComponent implements OnInit {
     </mat-dialog-actions>`,
 })
 export class EventsCreatedInfoDialog {
-
   constructor(
     public dialogRef: MatDialogRef<EventsCreatedInfoDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }
 
 @Component({
