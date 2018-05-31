@@ -1,8 +1,3 @@
-<div *ngIf="false && !googleAuthenticationService.isAuthenticated">You are not authenticated
-  <button mat-raised-button color="primary" (click)="login()">Login with Google (not necessary right now)</button>
-</div>
-<div *ngIf="googleAuthenticationService.isAuthenticated">You are authenticated
-</div>
 <form class="schedule-form" #scheduleForm="ngForm">
   <div class="form-input-item">
     <label for="startDate">Select a start date</label>
@@ -47,11 +42,6 @@
         </div>
       </li>
     </ul>
-  </div>
-  <div *ngIf="false && startDate && role">
-  Selected schedule start date is: {{startDate.toDateString()}}<br/>
-  Selected schedule model is: {{scheduleModel.title}}<br/>
-  Selected schedule role is: {{role.description}}<br/>
   </div>
   <div class="form-input-item buttons">
     <button mat-raised-button color="primary" [disabled]="!startDate || !scheduleModel || !role" [promiseBtn]="createSchedulePromise">Preview</button>

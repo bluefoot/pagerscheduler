@@ -1,3 +1,16 @@
 <header>
   <h1 class="main-title">Pager Scheduler</h1>
+  <div class="menus">
+    <nav class="navbar-menu">
+      <ul>
+        <li><a href="https://git.ng.bluemix.net/gewtonj/Pager-Scheduler/wikis/home" target="_blank"><span>How to use</span></a></li>
+        <li><a href="https://git.ng.bluemix.net/gewtonj/Pager-Scheduler/" target="_blank"><span>View source</span></a></li>
+      </ul>
+    </nav>
+    <nav class="navbar-menu right">
+      <ul>
+        <li *ngIf="!googleAuthenticationService.isAuthenticated"><a class="special-link" href="javascript:;" (click)="login()" matTooltip="Log in with Google to authorize Pager Scheduler to create Google Calendar events. You you don't do it from here, you'll be prompted to do it when you click Create Schedule"><span>Authorize</span></a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
