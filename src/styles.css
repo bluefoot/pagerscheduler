@@ -22,7 +22,6 @@ app-root app-navbar {
   src: local('Optima'), url('/assets/fonts/optima.woff') format('woff');
 }
   
-  
 @font-face {
   font-family: 'Optima';
   font-style: normal;
@@ -74,4 +73,12 @@ html body .mat-fab,
 html body .mat-mini-fab {
   font-size:14px;
   font-weight:normal;
+}
+
+html body .mat-dialog-container {
+  color:inherit;
+}
+
+html body .mat-dialog-title {
+  margin:0;
 }

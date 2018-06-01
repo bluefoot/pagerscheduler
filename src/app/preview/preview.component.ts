@@ -1,8 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { ScheduleModel } from '../schedule-model';
+import { GoogleCalendarService } from '../google-calendar.service';
+import { Event } from '../event';
+import { SnackBarService } from '../snack-bar.service';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-preview',
@@ -15,9 +19,12 @@ export class PreviewComponent implements OnInit {
   private _scheduleModel : ScheduleModel;
   private _scheduleModelId : string;
   private _role : any;
+  private _schedule : Event[];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-  public dialogRef: MatDialogRef<PreviewComponent>) {
+    public dialogRef: MatDialogRef<PreviewComponent>,
+    private googleCalendarService: GoogleCalendarService,
+    private snackBarService:SnackBarService) {
     if(data) {
       this.startDate = data.startDate;
       this.scheduleModel = data.scheduleModel;
@@ -25,10 +32,18 @@ export class PreviewComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.googleCalendarService.previewSchedule(this.startDate, this.scheduleModel, this.role)
+    .then((result:Event[]) => {this.schedule = result})
+    .catch((error:any) => {this.snackBarService.displayMessage(error)});
+  }
 
   createSchedule() {
     this.dialogRef.close('create');
+  }
+
+  format(date:Date) {
+    return moment(date).format('dddd, MMMM Do HH:mm');
   }
 
   get startDate():Date {
@@ -53,5 +68,13 @@ export class PreviewComponent implements OnInit {
 
   set role(value:any) {
     this._role = value;
+  }
+
+  get schedule():Event[] {
+    return this._schedule;
+  }
+
+  set schedule(value:Event[]) {
+    this._schedule = value;
   }
 }

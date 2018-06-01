@@ -16,5 +16,8 @@ export class AppComponent {
     iconRegistry.addSvgIcon('role-b',sanitizer.bypassSecurityTrustResourceUrl('/assets/images/role-b.svg'));
     iconRegistry.addSvgIcon('open-in-new',sanitizer.bypassSecurityTrustResourceUrl('/assets/images/open-in-new.svg'));
     iconRegistry.addSvgIcon('help',sanitizer.bypassSecurityTrustResourceUrl('/assets/images/help.svg'));
+    iconRegistry.addSvgIcon('event-start',sanitizer.bypassSecurityTrustResourceUrl('/assets/images/event-start.svg'));
+    iconRegistry.addSvgIcon('event-finish',sanitizer.bypassSecurityTrustResourceUrl('/assets/images/event-finish.svg'));
+    iconRegistry.addSvgIcon('event-duration',sanitizer.bypassSecurityTrustResourceUrl('/assets/images/event-duration.svg'));
   }
 }

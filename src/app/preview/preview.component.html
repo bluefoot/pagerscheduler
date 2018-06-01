@@ -1,9 +1,25 @@
 <h2 mat-dialog-title>Preview</h2>
 
 <mat-dialog-content>
-Start Date {{startDate}}<br/>
-Schedule Model {{scheduleModel.title}}<br/>
-Role {{role.description}}
+  <section class="preview-schedule" *ngIf="schedule">
+    <p>{{schedule.length}} events will be created</p>
+    <table>
+      <thead>
+        <tr>
+          <td>Start</td>
+          <td>Finish</td>
+          <td>Duration</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of schedule">
+          <td><div class="content"><mat-icon svgIcon="event-start"></mat-icon> {{format(event.start)}}</div></td>
+          <td><div class="content"><mat-icon svgIcon="event-finish"></mat-icon>{{format(event.end)}}</div></td>
+          <td><div class="content"><mat-icon svgIcon="event-duration"></mat-icon>{{event.duration}} hours</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </mat-dialog-content>
 <mat-dialog-actions class="submit-buttons">
   <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>

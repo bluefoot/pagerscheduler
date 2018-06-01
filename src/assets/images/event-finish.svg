@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="no"?>
+<!-- Created by Gewton Teixeira gewtont@gmail.com,gewtonj@br.ibm.com  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="finish-icon" viewBox="0 0 500 500" style="background-color:#ffffff00" version="1.1"
+	xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+	x="0px" y="0px" width="500px" height="500px"
+>
+	<g id="finish-g">
+		<rect x="143" y="118" width="42.3428" height="292" fill="#ee6723"/>
+		<rect x="184.2286" y="123.5725" width="192.7714" height="146" stroke="#ee6723" stroke-width="6" fill="none" class="nofill"/>
+		<rect x="185.3428" y="125.8015" width="25.6286" height="24.5191" fill="#ee6723"/>
+		<rect x="234.3714" y="125.8015" width="23.4" height="24.5191" fill="#ee6723"/>
+		<rect x="281.1714" y="125.8015" width="23.4" height="24.5191" fill="#ee6723"/>
+		<rect x="327.9714" y="125.8015" width="23.4" height="24.5191" fill="#ee6723"/>
+		<rect x="210.9714" y="150.3206" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="257.7714" y="150.3206" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="304.5714" y="150.3206" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="351.3714" y="150.3206" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="185.3428" y="173.7252" width="25.6286" height="23.4046" fill="#ee6723"/>
+		<rect x="234.3714" y="173.7252" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="281.1714" y="173.7252" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="327.9714" y="173.7252" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="210.9714" y="197.1298" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="257.7714" y="197.1298" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="304.5714" y="197.1298" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="351.3714" y="197.1298" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="185.3428" y="220.5343" width="25.6286" height="23.4046" fill="#ee6723"/>
+		<rect x="234.3714" y="220.5343" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="281.1714" y="220.5343" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="327.9714" y="220.5343" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="210.9714" y="243.9389" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="257.7714" y="243.9389" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="304.5714" y="243.9389" width="23.4" height="23.4046" fill="#ee6723"/>
+		<rect x="351.3714" y="243.9389" width="23.4" height="23.4046" fill="#ee6723"/>
+		<path d="M 50 250 C 50 139.5416 139.5416 50 250 50 C 360.4584 50 450 139.5416 450 250 C 450 360.4584 360.4584 450 250 450 C 139.5416 450 50 360.4584 50 250 ZM 0 250 C 0 388.073 111.927 500 250 500 C 388.073 500 500 388.073 500 250 C 500 111.927 388.073 0 250 0 C 111.927 0 0 111.927 0 250 Z" fill="#ee6723"/>
+	</g>
+</svg>
