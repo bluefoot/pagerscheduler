@@ -24,6 +24,7 @@ import { ScheduleModelHelpSheet } from './schedule-form/schedule-form.component'
 import { Angular2PromiseButtonModule } from 'angular2-promise-buttons/dist';
 import { DayOfWeekPipe } from './day-of-week.pipe';
 import { ValidIfDirective } from './valid-if.directive';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { ValidIfDirective } from './valid-if.directive';
     EventsCreatedInfoDialog,
     ScheduleModelHelpSheet,
     DayOfWeekPipe,
-    ValidIfDirective
+    ValidIfDirective,
+    PreviewComponent
   ],
-  entryComponents: [EventsCreatedInfoDialog, ScheduleModelHelpSheet],
+  entryComponents: [EventsCreatedInfoDialog, ScheduleModelHelpSheet, PreviewComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),

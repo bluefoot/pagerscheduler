@@ -1,0 +1,8 @@
+.submit-buttons {
+  display:flex;
+  justify-content: space-around;
+}
+
+.submit-buttons button {
+  min-width:150px;
+}

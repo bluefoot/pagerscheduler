@@ -44,7 +44,7 @@
     </ul>
   </div>
   <div class="form-input-item buttons">
-    <button mat-raised-button color="primary" [disabled]="!startDate || !scheduleModel || !role" [promiseBtn]="createSchedulePromise">Preview</button>
+    <button mat-raised-button color="primary" [disabled]="!startDate || !scheduleModel || !role" (click)="preview()" [promiseBtn]="createSchedulePromise">Preview</button>
     <button mat-raised-button color="accent" [disabled]="!startDate || !scheduleModel || !role" (click)="createSchedule()" [promiseBtn]="createSchedulePromise">Create Schedule</button>
   </div>
 </form>

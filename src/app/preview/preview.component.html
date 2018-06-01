@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Preview</h2>
+
+<mat-dialog-content>
+Start Date {{startDate}}<br/>
+Schedule Model {{scheduleModel.title}}<br/>
+Role {{role.description}}
+</mat-dialog-content>
+<mat-dialog-actions class="submit-buttons">
+  <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="accent" (click)="createSchedule()">Create Schedule</button>
+</mat-dialog-actions>

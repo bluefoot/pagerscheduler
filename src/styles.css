@@ -15,21 +15,6 @@ app-root app-navbar {
   background-color:#fff;
 }
   
-/* app-root app-home {
-  flex-grow:1;
-  display:flex;
-}
-
-app-root app-home .wrap {
-  align-items: stretch;
-  width:100%;
-}
- */
-
-
-
-
-
 @font-face {
   font-family: 'Optima';
   font-style: normal;
@@ -72,8 +57,21 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight:bold;
+  text-transform: uppercase;
+  color: #df6e38;
 }
 
 code, pre {
   font-family: Menlo, Consolas, "Courier New", monospace;
+}
+
+html body .mat-button,
+html body .mat-raised-button, 
+html body .mat-icon-button, 
+html body .mat-stroked-button, 
+html body .mat-flat-button, 
+html body .mat-fab, 
+html body .mat-mini-fab {
+  font-size:14px;
+  font-weight:normal;
 }
