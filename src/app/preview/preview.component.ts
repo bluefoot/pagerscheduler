@@ -20,6 +20,7 @@ export class PreviewComponent implements OnInit {
   private _scheduleModelId : string;
   private _role : any;
   private _schedule : Event[];
+  eventPluralMapping:{[k: string]: string} = {'=0': 'No events', '=1': 'One event', 'other': '# events'};
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PreviewComponent>,

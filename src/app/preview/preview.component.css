@@ -2,6 +2,16 @@
   display:flex;
   justify-content: space-evenly;
   padding-bottom: 30px;
+  flex-direction: column;
+}
+
+.submit-buttons .cancel {
+  order:2;
+}
+
+.submit-buttons .submit {
+  order:1;
+  margin-bottom:10px;
 }
 
 .submit-buttons button {
@@ -10,13 +20,21 @@
 
 .preview-schedule table {
   margin: 0;
-  border-spacing: 10px 10px;
 }
 
 .preview-schedule table thead {
   font-size: 12px;
   font-weight: bold;
   color:#808080;
+}
+
+.preview-schedule table td {
+  padding: 5px 10px;
+}
+
+.preview-schedule table td:first-child,
+.preview-schedule table td:last-child {
+  padding: 5px 0;
 }
 
 .preview-schedule table .content {
@@ -36,8 +54,20 @@
 }
 
 @media all and (min-width: 450px) {
-  .preview-schedule table {
-    margin:0 10px;
-    border-spacing: 20px 10px;
+  .submit-buttons {
+    flex-direction: row;
+  }
+
+  .submit-buttons .cancel {
+    order:0;
+  }
+  
+  .submit-buttons .submit {
+    order:0;
+    margin-bottom:0px;
+  }
+
+  .preview-schedule table tbody tr:hover {
+    background-color:#fef7eb;
   }
 }
