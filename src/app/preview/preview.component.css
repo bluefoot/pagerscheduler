@@ -42,6 +42,10 @@
   align-items: center;
 }
 
+mat-icon {
+  display:none;
+}
+
 .preview-schedule .content mat-icon {
   width: 18px;
   margin-right: 3px;
@@ -69,5 +73,9 @@
 
   .preview-schedule table tbody tr:hover {
     background-color:#fef7eb;
+  }
+
+  mat-icon {
+    display:block;
   }
 }
