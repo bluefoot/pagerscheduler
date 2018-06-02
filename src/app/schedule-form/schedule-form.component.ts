@@ -4,10 +4,11 @@ import { ScheduleModel } from '../schedule-model';
 import { GoogleAuthenticationService } from '../google-authentication.service';
 import { GoogleCalendarService } from '../google-calendar.service';
 import { ScheduleService } from '../schedule.service';
+import { SnackBarService } from '../snack-bar.service';
 import { Role } from '../schedule.service';
 import { DayOfWeekPipe } from '../day-of-week.pipe';
+import { PreviewComponent } from '../preview/preview.component';
 
-import { MatSnackBar } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 
@@ -29,23 +30,23 @@ export class ScheduleFormComponent implements OnInit {
   constructor(private scheduleService: ScheduleService, 
     public googleAuthenticationService: GoogleAuthenticationService,
     private googleCalendarService: GoogleCalendarService,
-    public snackBar: MatSnackBar,
     public dialog: MatDialog,
     private dayOfWeekPipe: DayOfWeekPipe,
-    private bottomSheet: MatBottomSheet) { 
+    private bottomSheet: MatBottomSheet,
+    private snackBarService:SnackBarService) { 
   }
   
   ngOnInit() {
     this.googleAuthenticationService.loadApiAndAuthenticateIfNeeded()
-    .then((response:any) => {this.displayMessage('You are authenticated with Google')})
+    .then((response:any) => {this.snackBarService.displayMessage('You are authenticated with Google')})
     // This should fail silently. Here's the code in case a message should've been shown
     //.catch((error:any) => {this.displayMessage(error)});
   }
 
   login() {
     this.googleAuthenticationService.login()
-    .then(() => {this.displayMessage('Logged in successfully')})
-    .catch((error:any) => {this.displayMessage(error)});
+    .then(() => {this.snackBarService.displayMessage('Logged in successfully')})
+    .catch((error:any) => {this.snackBarService.displayMessage(error)});
   }
 
   get invalidDateErrorMessage() {
@@ -63,12 +64,6 @@ export class ScheduleFormComponent implements OnInit {
       }
     }
     return true;
-  }
-
-  private displayMessage(msg:string) {
-    this.snackBar.open(msg, 'Close', {
-      duration: 10000,
-    });
   }
 
   set scheduleModelId(value:string) {
@@ -126,7 +121,7 @@ export class ScheduleFormComponent implements OnInit {
       let scheduleFormComponent = this; //https://stackoverflow.com/q/34930771
       this.googleAuthenticationService.login()
       .then(() => (scheduleFormComponent.doCreateSchedule()))
-      .catch((error:any) => {this.displayMessage('Unable to authenticate on Google: ' + error)});
+      .catch((error:any) => {this.snackBarService.displayMessage('Unable to authenticate on Google: ' + error)});
     } else {
       this.doCreateSchedule();
     }
@@ -136,9 +131,12 @@ export class ScheduleFormComponent implements OnInit {
     this.createSchedulePromise = this.googleCalendarService
     .insertSchedule(this.startDate, this.scheduleModel, this.role)
     .then((response:any) => {
-      let snackBarRef = this.snackBar.open(`${response.length} events created successfully`, 'Show event links', {
-        duration: 10000,
-      });
+      let snackBarRef = this.snackBarService.snackBar.open(
+          `${response.length} events created successfully`, 
+          'Show event links', {
+            duration: 10000,
+          }
+        );
       snackBarRef.onAction().subscribe(() => {
         let dialogRef = this.dialog.open(EventsCreatedInfoDialog, {
           data: { response: response }
@@ -150,7 +148,20 @@ export class ScheduleFormComponent implements OnInit {
       if(error.result && error.result.error) {
         errorMessage = 'Error: ' + error.result.error.message;
       }
-      this.displayMessage(errorMessage)
+      this.snackBarService.displayMessage(errorMessage)
+    });
+  }
+
+  preview() {
+    let dialogRef = this.dialog.open(PreviewComponent, {
+      data: { startDate: this.startDate, scheduleModel: this.scheduleModel,
+        role: this.role }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result=='create') {
+        this.createSchedule();
+      }
     });
   }
 }
@@ -165,17 +176,32 @@ export class ScheduleFormComponent implements OnInit {
       }
       ul {
         list-style:none;
-        padding-left:20px;
+        padding:0;
       }
+
       ::ng-deep .open-in-new {
+        white-space:nowrap;
+        /*
+        alternative (without mat-icon):
+        background-image: url(/assets/images/open-in-new.svg);
+        background-repeat: no-repeat;
+        background-size: 13px;
+        background-position: top right;
+        padding-right: 12px;
+        padding-top: 3px;
+        */
+      }
+
+      ::ng-deep .open-in-new .open-in-new-icon {
         height:13px;
         position: relative;
-        top: -10px;
+        top: -8px;
+        right: 10px;
       }
-      ::ng-deep .open-in-new svg {
+      ::ng-deep .open-in-new .open-in-new-icon svg {
         fill:#A5A3A6;
       }
-      ::ng-deep a:hover .open-in-new svg {
+      ::ng-deep .open-in-new:hover .open-in-new-icon svg {
         fill:#df6e38;
       }
     </style>
@@ -183,8 +209,8 @@ export class ScheduleFormComponent implements OnInit {
     <mat-dialog-content>
       <ul *ngFor="let item of data.response">
         <li>
-          <a href="{{item.result.htmlLink}}" target="_blank">{{item.result.htmlLink}}
-            <mat-icon class="open-in-new" svgIcon="open-in-new"></mat-icon>
+          <a class="open-in-new" href="{{item.result.htmlLink}}" target="_blank">{{item.result.htmlLink}}
+            <mat-icon class="open-in-new-icon" svgIcon="open-in-new"></mat-icon>
           </a>
         </li>
       </ul>

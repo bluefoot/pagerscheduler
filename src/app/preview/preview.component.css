@@ -1,0 +1,81 @@
+.submit-buttons {
+  display:flex;
+  justify-content: space-evenly;
+  padding-bottom: 30px;
+  flex-direction: column;
+}
+
+.submit-buttons .cancel {
+  order:2;
+}
+
+.submit-buttons .submit {
+  order:1;
+  margin-bottom:10px;
+}
+
+.submit-buttons button {
+  min-width:150px;
+}
+
+.preview-schedule table {
+  margin: 0;
+}
+
+.preview-schedule table thead {
+  font-size: 12px;
+  font-weight: bold;
+  color:#808080;
+}
+
+.preview-schedule table td {
+  padding: 5px 10px;
+}
+
+.preview-schedule table td:first-child,
+.preview-schedule table td:last-child {
+  padding: 5px 0;
+}
+
+.preview-schedule table .content {
+  display: flex;
+  align-items: center;
+}
+
+mat-icon {
+  display:none;
+}
+
+.preview-schedule .content mat-icon {
+  width: 18px;
+  margin-right: 3px;
+}
+
+::ng-deep .preview-schedule .content mat-icon svg,
+::ng-deep .preview-schedule .content mat-icon svg g rect:not(.nofill),
+::ng-deep .preview-schedule .content mat-icon svg g path {
+  fill: #544850;
+}
+
+@media all and (min-width: 450px) {
+  .submit-buttons {
+    flex-direction: row;
+  }
+
+  .submit-buttons .cancel {
+    order:0;
+  }
+  
+  .submit-buttons .submit {
+    order:0;
+    margin-bottom:0px;
+  }
+
+  .preview-schedule table tbody tr:hover {
+    background-color:#fef7eb;
+  }
+
+  mat-icon {
+    display:block;
+  }
+}

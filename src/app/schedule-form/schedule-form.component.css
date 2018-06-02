@@ -81,9 +81,11 @@
   fill: #f2d5c7;
 }
 
-.radio-icon-container .radio-icon:hover, 
+.radio-icon-container .radio-icon:hover{
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+.radio-icon-container .radio-icon:hover,
 .radio-icon-container .radio-icon-form-wrap > input:checked + .radio-icon {
-  /* border:2px solid #d27345; */
   background-color:#f5be55;
   border-color:#df6e38;
 }

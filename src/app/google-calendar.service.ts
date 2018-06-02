@@ -8,6 +8,7 @@
 import { Injectable } from '@angular/core';
 import { ScheduleModel } from './schedule-model';
 import { Role } from './schedule.service';
+import { Event } from './event';
 import * as moment from 'moment';
 
 declare var gapi: any;
@@ -18,6 +19,30 @@ declare var gapi: any;
 export class GoogleCalendarService {
 
   constructor() { }
+
+  previewSchedule(startDate : Date, scheduleModel : ScheduleModel, role : any):Promise<Event[]> {
+    if(!scheduleModel || !scheduleModel.schedule) return Promise.resolve([]);
+    return new Promise((resolve, reject) => {
+      try {
+        let schedule:Event[] = [];
+        for (var _i = 0; _i < scheduleModel.schedule.length; _i++) {
+          let event:any = this.getEventForRole(role, scheduleModel.schedule[_i]);
+          if(event.start) {
+            // calculate start and end date
+            let eventTimeSplitted = event.start.split(':');
+            let hour = eventTimeSplitted[0];
+            let minute = eventTimeSplitted[1];
+            let eventStartDate = moment.utc(startDate).add(_i, 'days').hour(hour).minute(minute);
+            let eventEndDate = moment(eventStartDate).add(event.duration, 'hour');
+            schedule.push(new Event(eventStartDate.toDate(), eventEndDate.toDate(), event.duration));
+          }
+        }
+        resolve(schedule);
+      } catch (e) {
+        reject('Unable to preview schedule: ' + e);
+      }
+    });
+  }
 
   /**
    * Iterates over the ScheduleModel and creates the events, the first day

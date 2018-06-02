@@ -82,7 +82,7 @@ $pager-scheduler-warn:    mat-palette($mat-deep-orange);
 
 $pager-scheduler-theme: mat-light-theme($pager-scheduler-primary, $pager-scheduler-accent, $pager-scheduler-warn);
 
-$custom-typography: mat-typography-config($font-family: 'Optima');
+$custom-typography: mat-typography-config($font-family: 'Optima, Helvetica, Arial, sans-serif');
 
 @include mat-core($custom-typography);
 
