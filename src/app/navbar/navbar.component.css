@@ -30,6 +30,15 @@ header .menus {
   color:#544850;
 }
 
+.main-title .status {
+  text-transform: none;
+  font-size: .6em;
+  font-weight: normal;
+  position: relative;
+  bottom: -10px;
+  color: #9E9CA0;
+}
+
 .navbar-menu {
   height:100%;
   display:flex;
