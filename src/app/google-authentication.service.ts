@@ -65,6 +65,7 @@ export class GoogleAuthenticationService {
 			} 
 			gapi.auth.authorize(authorisationRequestData,
 				(authenticationResult) => {
+					console.log(authenticationResult);
 					if(authenticationResult && !authenticationResult.error){
 						this.isAuthenticated = true
 						resolve()
