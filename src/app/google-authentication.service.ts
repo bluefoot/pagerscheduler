@@ -65,21 +65,26 @@ export class GoogleAuthenticationService {
 			} 
 			gapi.auth.authorize(authorisationRequestData,
 				(authenticationResult) => {
-					console.log(authenticationResult);
+					if(console && console.log) console.log(authenticationResult);
 					if(authenticationResult && !authenticationResult.error){
 						this.isAuthenticated = true
 						resolve()
 					}
 					else {
 						this.isAuthenticated = false
+						let msg;
 						if(immediate && 
 							authenticationResult.error && authenticationResult.error == 'immediate_failed') {
 							// this means pager was trying to auto authenticate but user was 
 							// not previously logged
-							reject('User not previously logged in. Need to log in explicitly first');
+							msg = 'User not previously logged in. Need to log in explicitly first';
 						} else {
-							reject(authenticationResult.error);
+							msg = authenticationResult.error
+							if(authenticationResult.details) {
+								msg += ': ' + authenticationResult.details;
+							}
 						}
+						reject(msg);
 					}
 				}
 			);
