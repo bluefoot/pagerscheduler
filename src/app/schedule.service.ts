@@ -21,14 +21,14 @@ export class ScheduleService {
       classicSM.caption = '[Deprecated] Classic Schedule. Starts on Tuesday 14 MT, handover every day at 14 MT. No longer used as of March 2018.';
       classicSM.preferredDay = 'Tue';
       let classicSMSchedule = [
-        {personA : {start:'20:00', duration:24}, personB : {}},   //tue
-        {personA : {}, personB : {start:'20:00', duration:24}},   //wed
-        {personA : {start:'20:00', duration:24}, personB : {}},   //thu
-        {personA : {}, personB : {start:'20:00', duration:24}},   //fri
-        {personA : {start:'20:00', duration:24}, personB : {}},   //sat
-        {personA : {}, personB : {start:'20:00', duration:24}},   //sun
-        {personA : {start:'20:00', duration:24}, personB : {}},   //mon
-        {personA : {}, personB : {}}                              //tue
+        {personA : {start:'20:00', duration:24}, personB : {}, full: {start:'20:00', duration:168}},   //tue
+        {personA : {}, personB : {start:'20:00', duration:24}, full: {}},   //wed
+        {personA : {start:'20:00', duration:24}, personB : {}, full: {}},   //thu
+        {personA : {}, personB : {start:'20:00', duration:24}, full: {}},   //fri
+        {personA : {start:'20:00', duration:24}, personB : {}, full: {}},   //sat
+        {personA : {}, personB : {start:'20:00', duration:24}, full: {}},   //sun
+        {personA : {start:'20:00', duration:24}, personB : {}, full: {}},   //mon
+        {personA : {}, personB : {}, full: {}}                              //tue
       ];
       classicSM.schedule = classicSMSchedule;
       this.SCHEDULES.set(classicSM.title, classicSM);
@@ -39,14 +39,14 @@ export class ScheduleService {
       secondQ2018SM.caption = 'Schedule from 2Q2018. Starts on Monday 0H BRT, handover mostly at 0H BRT with some exceptions.';
       secondQ2018SM.preferredDay = 'Mon';
       let secondQ2018SMSchedule = [
-        {personA : {start:'03:00', duration:18}, personB : {start:'21:00', duration:30}},   //mon
-        {personA : {}, personB : {}},                                                       //tue
-        {personA : {start:'03:00', duration:24}, personB : {}},                             //wed
-        {personA : {}, personB : {start:'03:00', duration:24}},                             //thu
-        {personA : {start:'03:00', duration:24}, personB : {}},                             //fri
-        {personA : {}, personB : {start:'03:00', duration:24}},                             //sat
-        {personA : {start:'03:00', duration:24}, personB : {}},                             //sun
-        {personA : {}, personB : {}},                                                       //mon
+        {personA : {start:'03:00', duration:18}, personB : {start:'21:00', duration:30}, full: {start:'03:00', duration:168}},   //mon
+        {personA : {}, personB : {}, full: {}},                                                       //tue
+        {personA : {start:'03:00', duration:24}, personB : {}, full: {}},                             //wed
+        {personA : {}, personB : {start:'03:00', duration:24}, full: {}},                             //thu
+        {personA : {start:'03:00', duration:24}, personB : {}, full: {}},                             //fri
+        {personA : {}, personB : {start:'03:00', duration:24}, full: {}},                             //sat
+        {personA : {start:'03:00', duration:24}, personB : {}, full: {}},                             //sun
+        {personA : {}, personB : {}, full: {}},                                                       //mon
       ];
       secondQ2018SM.schedule = secondQ2018SMSchedule;
       this.SCHEDULES.set(secondQ2018SM.title, secondQ2018SM);

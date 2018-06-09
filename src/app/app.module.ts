@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { I18nPluralPipe } from'@angular/common';
 
 // Material stuff
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,7 +56,7 @@ import { PreviewComponent } from './preview/preview.component';
       {disableBtn: true}
     ),
   ],
-  providers: [DayOfWeekPipe],
+  providers: [DayOfWeekPipe, I18nPluralPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
