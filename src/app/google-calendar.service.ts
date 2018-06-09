@@ -97,27 +97,7 @@ export class GoogleCalendarService {
     } else if(role==Role.PersonB) {
       return schedule.personB;
     } else if(role==Role.Full) {
-      let event = {};
-      if(schedule.personA.start) {
-        event['start'] = schedule.personA.start;
-        if(schedule.personB.start) {
-          // This day has both personA and personB events. Sum up their durations.
-          // For this to work, schedules must define person A events before person B,
-          // so this might become delicate for more complex schedules (such as more
-          // than two hand overs in a day). Currently works fine.
-          event['duration'] = schedule.personA.duration + schedule.personB.duration;
-        } else {
-          // this day has only personA event
-          event['duration'] = schedule.personA.duration;
-        }
-      } else if (schedule.personB.start) {
-        // this day has only personB event
-        event['start'] = schedule.personB.start;
-        event['duration'] = schedule.personB.duration;
-      } else {
-        // no event start this day
-      }
-      return event;
+      return schedule.full;
     }
   }
 
