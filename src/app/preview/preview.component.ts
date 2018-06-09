@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 
 import { ScheduleModel } from '../schedule-model';
 import { GoogleCalendarService } from '../google-calendar.service';
+import { EventPluralMappingService } from '../event-plural-mapping.service';
 import { Event } from '../event';
 import { SnackBarService } from '../snack-bar.service';
 
@@ -20,12 +21,12 @@ export class PreviewComponent implements OnInit {
   private _scheduleModelId : string;
   private _role : any;
   private _schedule : Event[];
-  eventPluralMapping:{[k: string]: string} = {'=0': 'No events', '=1': 'One event', 'other': '# events'};
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PreviewComponent>,
     private googleCalendarService: GoogleCalendarService,
-    private snackBarService:SnackBarService) {
+    private snackBarService:SnackBarService,
+    public eventPluralMappingService:EventPluralMappingService) {
     if(data) {
       this.startDate = data.startDate;
       this.scheduleModel = data.scheduleModel;

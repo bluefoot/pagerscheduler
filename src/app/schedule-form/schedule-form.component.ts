@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { I18nPluralPipe } from'@angular/common';
 
 import { ScheduleModel } from '../schedule-model';
 import { GoogleAuthenticationService } from '../google-authentication.service';
 import { GoogleCalendarService } from '../google-calendar.service';
+import { EventPluralMappingService } from '../event-plural-mapping.service';
 import { ScheduleService } from '../schedule.service';
 import { SnackBarService } from '../snack-bar.service';
 import { Role } from '../schedule.service';
@@ -33,7 +35,9 @@ export class ScheduleFormComponent implements OnInit {
     public dialog: MatDialog,
     private dayOfWeekPipe: DayOfWeekPipe,
     private bottomSheet: MatBottomSheet,
-    private snackBarService:SnackBarService) { 
+    private snackBarService:SnackBarService,
+    public eventPluralMappingService:EventPluralMappingService,
+    private pluralPipe: I18nPluralPipe) { 
   }
   
   ngOnInit() {
@@ -132,7 +136,7 @@ export class ScheduleFormComponent implements OnInit {
     .insertSchedule(this.startDate, this.scheduleModel, this.role)
     .then((response:any) => {
       let snackBarRef = this.snackBarService.snackBar.open(
-          `${response.length} events created successfully`, 
+          `${this.pluralPipe.transform(response.length, this.eventPluralMappingService.eventPluralMapping)} created successfully`, 
           'Show event links', {
             duration: 10000,
           }
