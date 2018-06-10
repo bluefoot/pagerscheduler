@@ -4,6 +4,7 @@ export class ScheduleModel {
   private _caption:string;
   private _schedule:any[];
   private _preferredDay:string;
+  private _active:boolean;
 
   get title() {
     return this._title;
@@ -43,5 +44,13 @@ export class ScheduleModel {
 
   set preferredDay(value:string) {
     this._preferredDay = value;
+  }
+
+  get active() {
+    return this._active;
+  }
+
+  set active(value:boolean) {
+    this._active = value;
   }
 }
