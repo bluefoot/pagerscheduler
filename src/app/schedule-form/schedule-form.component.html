@@ -10,8 +10,8 @@
       </mat-error>
     </mat-form-field>
   </div>
-  <div class="form-input-item">
-    <label>Select a model</label>
+  <div class="form-input-item" *ngIf="scheduleModels.size > 1">
+    <label>Select a schedule</label>
     <ul class="radio-icon-group">
       <li *ngFor="let schedule of getValues(scheduleModels)" class="radio-icon-container">
         <label class="radio-icon-form-wrap" [matTooltip]="getScheduleModelTooltipText(schedule)">

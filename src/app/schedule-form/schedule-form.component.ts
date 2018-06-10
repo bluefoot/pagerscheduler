@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { I18nPluralPipe } from'@angular/common';
+import { isDevMode } from '@angular/core';
 
 import { ScheduleModel } from '../schedule-model';
 import { GoogleAuthenticationService } from '../google-authentication.service';
@@ -24,7 +25,6 @@ import * as moment from 'moment';
 export class ScheduleFormComponent implements OnInit {
   private _startDate : Date;
   private _scheduleModel : ScheduleModel;
-  private _scheduleModelId : string;
   private _role : any;
 
   createSchedulePromise: Promise<any>;
@@ -55,7 +55,13 @@ export class ScheduleFormComponent implements OnInit {
 
   get invalidDateErrorMessage() {
     if(this.scheduleModel) {
-      return `The selected model “${this.scheduleModel.title}” is supposed to start on a <strong>${this.dayOfWeekPipe.transform(this.scheduleModel.preferredDay)}</strong>`;
+      let beginMsg;
+      if(this.scheduleModels.size == 1) {
+        beginMsg = 'The current schedule';
+      } else {
+        beginMsg = `The selected schedule “${this.scheduleModel.title}”`;
+      }
+      return `${beginMsg} is supposed to start on a <strong>${this.dayOfWeekPipe.transform(this.scheduleModel.preferredDay)}</strong>`;
     } else {
       return '';
     }
@@ -75,10 +81,18 @@ export class ScheduleFormComponent implements OnInit {
   }
 
   get scheduleModels() {
-    return this.scheduleService.getScheduleModels();
+    if(isDevMode()) {
+      return this.scheduleService.schedules;
+    } else {
+      let schedules:Map<String, ScheduleModel> = this.scheduleService.activeSchedules;
+      if(schedules.size == 1) {
+        this.scheduleModel = schedules.values().next().value;
+      }
+      return schedules;
+    }
   }
 
-  get roles() : Array<any> {
+  get roles():Array<any> {
     return Object.values(Role);
   }
 
