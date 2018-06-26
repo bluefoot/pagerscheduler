@@ -1,7 +1,7 @@
 <form class="schedule-form" #scheduleForm="ngForm">
   <div class="form-input-item">
     <label for="startDate">Select a start date</label>
-    <mat-form-field floatLabel="never">
+    <mat-form-field floatLabel="never" hideRequiredMarker="true">
       <input #startDateControl=ngModel [validIf]="!validateDate()" placeholder="MM/DD/YYYY" name="startDate" matInput [matDatepicker]="startDatePicker" [(ngModel)]="startDate" required>
       <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #startDatePicker></mat-datepicker>
