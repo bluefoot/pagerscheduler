@@ -50,7 +50,6 @@ export class ScheduleService {
     ];
     secondQ2018SM.schedule = secondQ2018SMSchedule;
     this._schedules.set(secondQ2018SM.title, secondQ2018SM);
-    this._activeSchedules.set(secondQ2018SM.title, secondQ2018SM);
 
     let thirdQ2018SM : ScheduleModel = new ScheduleModel();
     thirdQ2018SM.title = '3Q2018';
