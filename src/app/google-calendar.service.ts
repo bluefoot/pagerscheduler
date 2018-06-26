@@ -3,6 +3,7 @@
  * - https://github.com/stefanreichert/angular2-google-calendar-example
  * - https://developers.google.com/calendar/quickstart/js
  * - https://developers.google.com/calendar/create-events
+ * - https://developers.google.com/calendar/v3/reference/events/insert
  * - https://developers.google.com/api-client-library/javascript/features/promises
  */
 import { Injectable } from '@angular/core';

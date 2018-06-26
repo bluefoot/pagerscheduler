@@ -34,9 +34,9 @@ export class ScheduleService {
   
     let secondQ2018SM : ScheduleModel = new ScheduleModel();
     secondQ2018SM.title = '2Q2018';
-    secondQ2018SM.active = true;
+    secondQ2018SM.active = false;
     secondQ2018SM.image = 'model-2q2018';
-    secondQ2018SM.caption = 'Schedule from 2Q2018. Starts on Monday 0H BRT, handover mostly at 0H BRT with some exceptions.';
+    secondQ2018SM.caption = '[Deprecated] Used from April to June 2018. Starts on Monday 0H BRT, handover mostly at 0H BRT with some exceptions.';
     secondQ2018SM.preferredDay = 'Mon';
     let secondQ2018SMSchedule = [
       {personA : {start:'03:00', duration:18}, personB : {start:'21:00', duration:30}, full: {start:'03:00', duration:168}},   //mon
@@ -51,6 +51,26 @@ export class ScheduleService {
     secondQ2018SM.schedule = secondQ2018SMSchedule;
     this._schedules.set(secondQ2018SM.title, secondQ2018SM);
     this._activeSchedules.set(secondQ2018SM.title, secondQ2018SM);
+
+    let thirdQ2018SM : ScheduleModel = new ScheduleModel();
+    thirdQ2018SM.title = '3Q2018';
+    thirdQ2018SM.active = true;
+    thirdQ2018SM.image = 'model-2q2018';
+    thirdQ2018SM.caption = 'Schedule from July 2018 onwards. Starts on Monday 0H BRT, handover mostly at 0H BRT.';
+    thirdQ2018SM.preferredDay = 'Mon';
+    let thirdQ2018SMSchedule = [
+      {personA : {start:'03:00', duration:18}, personB : {start:'21:00', duration:6}, full: {start:'03:00', duration:168}},   //mon
+      {personA : {start:'03:00', duration:24}, personB : {}, full: {}},                                                       //tue
+      {personA : {}, personB : {start:'03:00', duration:24}, full: {}},                             //wed
+      {personA : {start:'03:00', duration:24}, personB : {}, full: {}},                             //thu
+      {personA : {}, personB : {start:'03:00', duration:24}, full: {}},                             //fri
+      {personA : {start:'03:00', duration:24}, personB : {}, full: {}},                             //sat
+      {personA : {}, personB : {start:'03:00', duration:24}, full: {}},                             //sun
+      {personA : {}, personB : {}, full: {}},                                                       //mon
+    ];
+    thirdQ2018SM.schedule = thirdQ2018SMSchedule;
+    this._schedules.set(thirdQ2018SM.title, thirdQ2018SM);
+    this._activeSchedules.set(thirdQ2018SM.title, thirdQ2018SM);
   }
 
   public get schedules() : Map<String, ScheduleModel> {
