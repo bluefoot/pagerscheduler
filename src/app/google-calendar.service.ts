@@ -74,6 +74,9 @@ export class GoogleCalendarService {
           'end': {
             'dateTime': eventEndDate.format(),
           },
+          'reminders': {
+            'useDefault': false
+          }
         };
 
         // create event
